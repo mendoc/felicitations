@@ -1,0 +1,32 @@
+{
+    "name": "felicitations",
+    "version": "1.0.0",
+    "description": "Plateforme pour encourager quelqu'un en lui offrant un jus.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mendoc/felicitations.git"
+    },
+    "keywords": [
+        "nextjs", "ussd"
+    ],
+    "author": "Dimitri ONGOUA <ongouadimitri5@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mendoc/felicitations/issues"
+    },
+    "homepage": "https://github.com/mendoc/felicitations#readme",
+    "dependencies": {
+        "bootstrap": "^5.0.1",
+        "firebase": "^8.6.3",
+        "next": "10.2.3",
+        "ongoua-pvit": "^1.3.2",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
+    }
+}
