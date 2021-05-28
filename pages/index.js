@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
+import photo from "../utils/photo";
 
 export default function Home() {
     const defaultUSSD = "*150*2*1*074213803*200%23";
@@ -34,7 +34,7 @@ export default function Home() {
     return (
         <React.Fragment>
             <Head>
-                <title>Felicitations !</title>
+                <title>Félicitations !</title>
                 <meta name="description" content="Offre moi un jus" />
                 <link
                     rel="icon"
@@ -63,9 +63,9 @@ export default function Home() {
                     style={{ height: 5 }}
                 ></div>
                 <div className="d-flex align-items-center mt-3">
-                    <Image
+                    <img
                         className="img-thumbnail rounded-circle d-inline-block"
-                        src="/photo.png"
+                        src={photo}
                         alt="Photo de Dimitri ONGOUA"
                         width={100}
                         height={100}
