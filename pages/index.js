@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import photo from "../utils/photo";
+import { fb } from "../utils/fb";
 
 export default function Home() {
     const defaultUSSD = "*150*2*1*074213803*200%23";
@@ -13,11 +14,13 @@ export default function Home() {
 
     const incMontant = () => {
         setMontant(montant + 100);
+        fb.analytics().logEvent("increment_montant");
     };
 
     const decMontant = () => {
         if (montant <= 200) return;
         setMontant(montant - 100);
+        fb.analytics().logEvent("decrement_montant");
     };
 
     const updateUSSD = () => {
@@ -27,6 +30,10 @@ export default function Home() {
             setUssd(`*150*2*1*074213803*${montant}%23`);
         }
     };
+    useEffect(() => {
+        fb.analytics();
+    }, []);
+
     useEffect(() => {
         updateUSSD();
     }, [montant]);
@@ -127,6 +134,9 @@ export default function Home() {
                         <label
                             className="btn btn-outline-danger fs-3"
                             htmlFor="btnradio1"
+                            onClick={() => {
+                                fb.analytics().logEvent("clic_airtel_money");
+                            }}
                         >
                             Airtel Money
                         </label>
@@ -141,6 +151,9 @@ export default function Home() {
                         <label
                             className="btn btn-outline-primary fs-2"
                             htmlFor="btnradio2"
+                            onClick={() => {
+                                fb.analytics().logEvent("clic_moov_money");
+                            }}
                         >
                             Moov Money
                         </label>
@@ -148,6 +161,9 @@ export default function Home() {
                     <a
                         href={`tel:${ussd}`}
                         className="btn btn-success mt-3 w-100 fixed-bottom fs-1 rounded-0"
+                        onClick={() => {
+                            fb.analytics().logEvent("clic_envoyer");
+                        }}
                     >
                         Envoyer
                     </a>
