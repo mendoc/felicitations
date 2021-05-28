@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Home() {
     const defaultUSSD = "*150*2*1*074213803*200%23";
@@ -35,15 +36,17 @@ export default function Home() {
             <Head>
                 <title>Felicitaions !</title>
                 <meta name="description" content="Offre moi un jus" />
-                <link rel="icon" href="/photo.png" sizes="400x400" type="image/png" />
+                <link
+                    rel="icon"
+                    href="/photo.png"
+                    sizes="400x400"
+                    type="image/png"
+                />
                 <meta name="theme-color" content="#157347" />
 
                 <meta property="og:title" content="Offre moi un jus" />
                 <meta property="og:type" content="article" />
-                <meta
-                    property="og:url"
-                    content="https://felicitations.ooo"
-                />
+                <meta property="og:url" content="https://felicitations.ooo" />
                 <meta
                     property="og:image"
                     content="https://felicitations.ooo/photo.png"
@@ -60,13 +63,14 @@ export default function Home() {
                     style={{ height: 5 }}
                 ></div>
                 <div className="d-flex align-items-center mt-3">
-                    <img
-                        className="img-thumbnail rounded-circle d-inline-block me-2"
-                        style={{ width: 100 }}
-                        src="photo.png"
+                    <Image
+                        className="img-thumbnail rounded-circle d-inline-block"
+                        src="/photo.png"
                         alt="Photo de Dimitri ONGOUA"
+                        width={100}
+                        height={100}
                     />
-                    <div>
+                    <div className="ms-2">
                         <span className="fw-bold fs-2 d-block">
                             Dimitri ONGOUA
                         </span>
