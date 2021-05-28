@@ -3,3 +3,14 @@
 body {
     font-family: "Port Lligat Slab", serif;
 }
+
+@media screen and (min-width: 576px) {
+    body {
+        max-width: 50%;
+        margin: auto;
+    }
+
+    .fixed-bottom {
+        position: relative;
+    }
+}
