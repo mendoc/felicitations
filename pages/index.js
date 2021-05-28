@@ -4,8 +4,9 @@ import photo from "../utils/photo";
 import { fb } from "../utils/fb";
 
 export default function Home() {
-    const defaultUSSD = "*150*2*1*074213803*200%23";
+    const defaultUSSD = "";
 
+    const [numero, setNumero] = useState(null);
     const [montant, setMontant] = useState(200);
     const [operateur, setOperateur] = useState(1);
     const [ussd, setUssd] = useState(defaultUSSD);
@@ -25,18 +26,29 @@ export default function Home() {
 
     const updateUSSD = () => {
         if (operateur === 1) {
-            setUssd(`*150*2*1*074213803*${montant}%23`);
+            setUssd(`*150*2*1*${numero}*${montant}%23`);
         } else {
-            setUssd(`*150*2*1*074213803*${montant}%23`);
+            setUssd(`*150*2*1*${numero}*${montant}%23`);
         }
+        console.log(ussd);
     };
+
     useEffect(() => {
         fb.analytics();
+        const rc = fb.remoteConfig();
+        rc.fetchAndActivate()
+            .then(() => {
+                console.log("configuration chargée");
+                setNumero(rc.getString("am_numero"));
+            })
+            .catch((err) => {
+                console.log("Erreur lors du chargement de la configuration");
+            });
     }, []);
 
     useEffect(() => {
         updateUSSD();
-    }, [montant]);
+    }, [montant, numero]);
 
     return (
         <React.Fragment>
@@ -161,6 +173,7 @@ export default function Home() {
                     <a
                         href={`tel:${ussd}`}
                         className="btn btn-success mt-3 w-100 fixed-bottom fs-1 rounded-0"
+                        disabled={numero === null}
                         onClick={() => {
                             fb.analytics().logEvent("clic_envoyer");
                         }}

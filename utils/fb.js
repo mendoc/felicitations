@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/analytics";
+import "firebase/remote-config";
 
 const configProd = {
     apiKey: "AIzaSyC30_r0aBPvF7dmRRRQ3dm6Pm8uzAPox7o",
