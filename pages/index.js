@@ -38,8 +38,8 @@ export default function Home() {
                 <meta name="description" content="Offre moi un jus" />
                 <link
                     rel="icon"
-                    href="/photo.png"
-                    sizes="400x400"
+                    href="/favicon.png"
+                    sizes="32x32"
                     type="image/png"
                 />
                 <meta name="theme-color" content="#157347" />
