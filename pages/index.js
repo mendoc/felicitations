@@ -34,7 +34,7 @@ export default function Home() {
     return (
         <React.Fragment>
             <Head>
-                <title>Felicitaions !</title>
+                <title>Felicitations !</title>
                 <meta name="description" content="Offre moi un jus" />
                 <link
                     rel="icon"
@@ -46,14 +46,14 @@ export default function Home() {
 
                 <meta property="og:title" content="Offre moi un jus" />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content="https://felicitations.ooo" />
+                <meta property="og:url" content="https://felicitations.coach" />
                 <meta
                     property="og:image"
-                    content="https://felicitations.ooo/photo.png"
+                    content="https://felicitations.coach/photo.png"
                 />
                 <meta
                     property="og:description"
-                    content="Si tu apprécies ce que je fais, alors offre moi un jus"
+                    content="Tu peux m'offrir un jus si tu apprécies ce que je fais."
                 />
             </Head>
 
