@@ -27,8 +27,10 @@ export default function Home() {
     const updateUSSD = () => {
         if (operateur === 1) {
             setUssd(`*150*2*1*${numero}*${montant}%23`);
-        } else {
+        } else if (operateur === 2) {
             setUssd(`*150*2*1*${numero}*${montant}%23`);
+        } else {
+            setUssd("");
         }
         console.log(ussd);
     };
@@ -132,46 +134,74 @@ export default function Home() {
                         </button>
                     </div>
                     <p className="mt-4 mb-1 fs-4">Utiliser :</p>
-                    <div
-                        className="btn-group w-100"
-                        role="group"
-                        aria-label="Basic radio toggle button group"
-                    >
-                        <input
-                            type="radio"
-                            className="btn-check"
-                            name="btnradio"
-                            id="btnradio1"
-                        />
-                        <label
-                            className="btn btn-outline-danger fs-3"
-                            htmlFor="btnradio1"
-                            onClick={() => {
-                                fb.analytics().logEvent("clic_airtel_money");
-                            }}
+                    <div className="btn-group-vertical w-100">
+                        <div
+                            className="btn-group w-100"
+                            role="group"
+                            aria-label="Basic radio toggle button group"
                         >
-                            Airtel Money
-                        </label>
+                            <input
+                                type="radio"
+                                className="btn-check"
+                                name="btnradio"
+                                id="btnradio1"
+                            />
+                            <label
+                                className="btn btn-outline-danger fs-3"
+                                htmlFor="btnradio1"
+                                onClick={() => {
+                                    setOperateur(1);
+                                    fb.analytics().logEvent(
+                                        "clic_airtel_money"
+                                    );
+                                }}
+                            >
+                                Airtel Money
+                            </label>
+
+                            <input
+                                type="radio"
+                                className="btn-check"
+                                name="btnradio"
+                                id="btnradio2"
+                                disabled
+                            />
+                            <label
+                                className="btn btn-outline-primary fs-2"
+                                htmlFor="btnradio2"
+                                onClick={() => {
+                                    setOperateur(2);
+                                    fb.analytics().logEvent("clic_moov_money");
+                                }}
+                            >
+                                Moov Money
+                            </label>
+                        </div>
 
                         <input
                             type="radio"
                             className="btn-check"
                             name="btnradio"
-                            id="btnradio2"
-                            disabled
+                            id="btnpaypal"
                         />
                         <label
                             className="btn btn-outline-primary fs-2"
-                            htmlFor="btnradio2"
+                            htmlFor="btnpaypal"
                             onClick={() => {
-                                fb.analytics().logEvent("clic_moov_money");
+                                setOperateur(3);
+                                fb.analytics().logEvent("clic_paypal");
                             }}
                         >
-                            Moov Money
+                            PayPal
                         </label>
                     </div>
+
                     <a
-                        href={`tel:${ussd}`}
+                        href={
+                            operateur === 3
+                                ? "https://paypal.me/dimitriongoua"
+                                : `tel:${ussd}`
+                        }
                         className="btn btn-success mt-3 w-100 fixed-bottom fs-1 rounded-0"
                         disabled={numero === null}
                         onClick={() => {
